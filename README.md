@@ -20,4 +20,4 @@ you must add on the off line host on /etc/hosts
 #host testing
 127.0.0.1	testing.local
 
-and the run on your browser http:://testing.local/
+and the run on your browser http://testing.local/
