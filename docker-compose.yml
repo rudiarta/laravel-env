@@ -1,0 +1,54 @@
+version: '2.1'
+services:
+    nginx:
+        build:
+            context: ./config
+            dockerfile: nginx-extensions
+        container_name: nginx-laravel
+        ports:
+            - '80:80'
+            - '443:443'
+        volumes:
+            - './config/nginx/conf.d:/etc/nginx/conf.d:rw'
+            - './htdocs:/usr/share/nginx/html:rw'
+        networks:
+            app_net:
+                ipv4_address: 172.16.238.10
+        links:
+            - php72
+            - mysql
+    php72:
+        build:
+            context: ./config
+            dockerfile: php72-extensions
+        container_name: php72-laravel
+        volumes:
+            - './htdocs:/usr/share/nginx/html:rw'
+        networks:
+            app_net:
+                ipv4_address: 172.16.238.14
+        working_dir: /usr/share/nginx/html
+    mysql:
+        build:
+            context: ./config
+            dockerfile: mysql-extensions
+        container_name: mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_USER: laravel
+            MYSQL_PASSWORD: laravel
+            MYSQL_ROOT_PASSWORD: laravel
+            MYSQL_DATABASE: laravel
+        volumes:
+            - ./db/:/var/lib/mysql
+        networks:
+            app_net:
+                ipv4_address: 172.16.238.15
+networks:
+    app_net:
+        driver: bridge
+        ipam:
+            config: 
+                - subnet: 172.16.238.0/24
+                  gateway: 172.16.238.1
