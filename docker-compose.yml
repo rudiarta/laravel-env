@@ -5,6 +5,7 @@ services:
             context: ./config
             dockerfile: nginx-extensions
         container_name: nginx-laravel
+        restart: always
         ports:
             - '80:80'
             - '443:443'
