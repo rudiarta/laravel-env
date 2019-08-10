@@ -16,9 +16,12 @@ put your laravel project folder to the htdocs/
 
 *if you use mac user
 you must add on the end of line host on /etc/hosts 
+*
+```
 #host testing
 127.0.0.1	testing.local
-*
+```
+
 if you use windows, or linux find the to change the host like that
 
 and the run on your browser http://testing.local/
