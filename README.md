@@ -25,3 +25,9 @@ you must add on the end of line host on /etc/hosts
 if you use windows, or linux find the to change the host like that
 
 and the run on your browser http://testing.local/
+
+## work with cli on docker container
+to get in on the bash container use command like this
+```
+docker exec -it {container_id} bash
+```
