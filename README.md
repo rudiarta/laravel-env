@@ -31,3 +31,7 @@ to get in on the bash container use command like this
 ```
 docker exec -it {container_id} bash
 ```
+
+## fix mysql issue
+1. docker-php-ext-install mysqli
+2. docker-php-ext-enable mysqli
